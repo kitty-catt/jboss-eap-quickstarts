@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kitchensink-deployment
+  labels:
+    app: kitchensink-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kitchensink-web
+  template:
+    metadata:
+      labels:
+        app: kitchensink-web
+    spec:
+      containers:
+      - name: kitchensink-deployment
+        image: de.icr.io/kitty-catt/kitchensink
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kitchensink-service
+  labels:
+    app: kitchensink-web
+spec:
+  selector:
+    app: kitchensink-web
+  ports:
+   - port: 8080
+     targetPort: 8080
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: kitchensink-web
+  name: kitchensink-service
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: kitchensink-service
+    weight: 100
