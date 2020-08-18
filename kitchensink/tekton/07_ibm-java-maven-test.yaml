@@ -93,13 +93,16 @@ spec:
               key: SONARQUBE_PASSWORD
               optional: true
       script: |
+          echo "build of $(params.sonarqube-java-bin-path):"
+          ls -lrt $(params.sonarqube-java-bin-path)
           APP_NAME=$(params.app-name)
           SONARQUBE_JAVA_BINARIES_PATH="$(params.sonarqube-java-bin-path)"
           if ! command -v sonar-scanner &> /dev/null
           then
-              echo "Skipping SonarQube step, no task defined"
-              exit 0
+              echo "Like to Skip SonarQube step, no task defined"
+              #exit 0
           fi
+          echo "Continue with SonarQube scan and upload to ${SONARQUBE_URL}"
           if [ -n "${SONARQUBE_URL}" ]; then
             sonar-scanner \
             -Dsonar.login=${SONARQUBE_USER} \
