@@ -396,8 +396,7 @@
                 </property>
             </activation>
             <modules>
-                <!-- All the modules that require nothing but JBoss Enterprise
-                    Application Platform or JBoss EAP -->
+                <!-- Just kitchensink
                 <module>batch-processing</module>
                 <module>bmt</module>
                 <module>cmt</module>
@@ -413,7 +412,9 @@
                 <module>hibernate</module>
                 <module>jaxrs-client</module>
                 <module>jsonp</module>
+                -->
                 <module>kitchensink</module>
+                <!-- Just kitchensink
                 <module>kitchensink-angularjs</module>
                 <module>kitchensink-jsp</module>
                 <module>kitchensink-ml</module>
@@ -434,6 +435,7 @@
                 <module>websocket-endpoint</module>
                 <module>websocket-hello</module>
                 <module>xml-jaxp</module>
+                -->
             </modules>
         </profile>
 
