@@ -45,7 +45,8 @@ oc apply -f ../tekton/07_ibm-java-maven-test.yaml
 
 # pipeline
 #oc apply -f ../tekton/pipeline-vfs-just-sonar.yaml
-oc apply -f ../tekton/pipeline-vfs-sonar-and-icr.yaml
+#oc apply -f ../tekton/pipeline-vfs-sonar-and-icr.yaml
+oc apply -f ../tekton/simple-sonarscan-pipeline.yaml
 
 # sonarqube
 echo "using SONARQUBE_URL=${SONARQUBE_URL}"

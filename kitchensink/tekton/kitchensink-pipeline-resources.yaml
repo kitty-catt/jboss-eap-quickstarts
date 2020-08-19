@@ -18,6 +18,6 @@ items:
     - name: revision
       value: master
     - name: url
-      value: https://github.com/kitty-catt/kitchensink
+      value: https://github.com/kitty-catt/jboss-eap-quickstarts
     type: git
 kind: List

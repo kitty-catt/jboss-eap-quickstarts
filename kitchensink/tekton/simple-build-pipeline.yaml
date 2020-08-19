@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: start-build-pipeline
+spec:
+  resources:
+    - name: git-source-inventory
+      type: git
+  tasks:
+    - name: openshift-client
+      params:
+        - name: SCRIPT
+          value: oc start-build --follow=true --wait=true eap-app
+        - name: ARGS
+          value:
+            - help
+      resources:
+        inputs:
+          - name: source
+            resource: git-source-inventory
+      taskRef:
+        kind: ClusterTask
+        name: openshift-client
+

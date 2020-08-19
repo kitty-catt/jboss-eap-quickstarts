@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: build-and-deploy-jboss
+spec:
+  tasks:
+    - name: ibm-java-maven-test
+      params:
+        - name: git-url
+          value: 'https://github.com/kitty-catt/jboss-eap-quickstarts'
+        - name: git-revision
+          value: master
+        - name: source-dir
+          value: /kitchensink
+        - name: app-name
+          value: pnst-light
+        - name: maven-image
+          value: 'maven:3.6.3-jdk-11-slim'
+        - name: sonarqube-java-bin-path
+          value: kitchensink/target
+        - name: sonarqube-cli
+          value: sonarsource/sonar-scanner-cli
+      taskRef:
+        kind: Task
+        name: ibm-java-maven-test
+
