@@ -1,4 +1,7 @@
 echo "custom S2I script"
 
+ls -l /tmp/src
+tree /tmp/src
+
 chmod u+x /usr/local/s2i/assemble
 /usr/local/s2i/assemble
