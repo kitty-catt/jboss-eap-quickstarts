@@ -1,3 +1,0 @@
-echo "custom run script"
-chmod u+x /usr/local/s2i/run
-exec /usr/local/s2i/run
