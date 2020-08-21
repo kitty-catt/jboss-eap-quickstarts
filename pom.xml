@@ -95,12 +95,12 @@
     <repository>
       <id>releases-repository</id>
       <name>Releases Repository</name>
-      <url>https://nexus3.tools.svc.cluster.local:8081/nexus/content/repositories/snapshots/</url>
+      <url>http://nexus3.tools.svc.cluster.local:8081/nexus/content/repositories/snapshots/</url>
     </repository>
     <snapshotRepository>
       <id>snapshots-repository</id>
       <name>Snapshots Repository</name>
-      <url>https://nexus3.tools.svc.cluster.local:8081/nexus/content/repositories/snapshots/</url>
+      <url>http://nexus3.tools.svc.cluster.local:8081/nexus/content/repositories/snapshots/</url>
     </snapshotRepository>
   </distributionManagement>    
 
