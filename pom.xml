@@ -90,6 +90,19 @@
         <jboss.developer.drupal.url>http://rhdp-drupal.stage.redhat.com/</jboss.developer.drupal.url>
         <linkXRef>false</linkXRef>
     </properties>
+    
+  <distributionManagement>
+    <repository>
+      <id>releases-repository</id>
+      <name>Releases Repository</name>
+      <url>https://localhost:8081/nexus/content/repositories/snapshots/</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots-repository</id>
+      <name>Snapshots Repository</name>
+      <url>https://localhost:8081/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>    
 
     <dependencyManagement>
         <dependencies>
