@@ -28,6 +28,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>kitchensink</artifactId>
+    <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Quickstart: kitchensink</name>
     <description>A starter Jakarta EE web application project for use in JBoss EAP</description>
