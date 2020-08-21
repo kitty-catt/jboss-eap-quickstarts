@@ -205,16 +205,13 @@
 				<version>3.0.0-M3</version>
 				<executions>
 					<execution>
-						<id>enforce-no-repositories</id>
+						<id>AlwaysPass</id>
 						<goals>
 							<goal>enforce</goal>
 						</goals>
 						<configuration>
 							<rules>
-								<requireNoRepositories>
-									<message>Best Practice is to never define repositories in
-										pom.xml (use a repository manager instead)</message>
-								</requireNoRepositories>
+                				<AlwaysPass/>
 							</rules>
 						</configuration>
 					</execution>
