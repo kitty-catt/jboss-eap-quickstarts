@@ -95,12 +95,12 @@
     <repository>
       <id>releases-repository</id>
       <name>Releases Repository</name>
-      <url>http://nexus3.tools.svc.cluster.local:8081/nexus/content/repositories/snapshots/</url>
+      <url>http://nexus3.tools.svc.cluster.local:8081/repository/maven-releases/</url>
     </repository>
     <snapshotRepository>
       <id>snapshots-repository</id>
       <name>Snapshots Repository</name>
-      <url>http://nexus3.tools.svc.cluster.local:8081/nexus/content/repositories/snapshots/</url>
+      <url>http://nexus3.tools.svc.cluster.local:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
   </distributionManagement>    
 
