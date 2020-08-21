@@ -200,51 +200,21 @@
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>3.0.0-M2</version>
+				<version>3.0.0-M3</version>
 				<executions>
 					<execution>
-						<id>enforce-java-version</id>
+						<id>enforce-no-repositories</id>
 						<goals>
 							<goal>enforce</goal>
 						</goals>
 						<configuration>
 							<rules>
-							<!-- 
-								<bannedRepositories>
-									<level>ERROR</level>
-									<bannedRepositories>http://*</bannedRepositories>
-									<bannedPluginRepositories>http://*</bannedPluginRepositories>
-								</bannedRepositories>
-							 -->
-
-							  <allowedRepositories>
-								<allowedRepository>http://nexus3.tools.svc.cluster.local:8081/*<allowedRepository>
-							  </allowedRepositories>
-			                  <allowedPluginRepositories>
-			                    <allowedPluginRepository>http://nexus3.tools.svc.cluster.local:8081/*<allowedPluginRepository>
-			                  </allowedPluginRepositories>		
-			                  					 	
-								<requireJavaVersion>
-									<message>To build this project JDK 1.8 (or greater) is
-										required. Please install it.</message>
-									<version>1.8</version>
-								</requireJavaVersion>
-							</rules>
-						</configuration>
-					</execution>
-					<execution>
-						<id>enforce-maven-version</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<message>To build this project Maven 3.2.5 (or greater) is
-										required. Please install it.</message>
-									<version>3.2.5</version>
-								</requireMavenVersion>
+								<requireNoRepositories>
+									<message>Best Practice is to never define repositories in
+										pom.xml (use a repository manager instead)</message>
+								</requireNoRepositories>
 							</rules>
 						</configuration>
 					</execution>
