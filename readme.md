@@ -1,1 +1,1 @@
-Let's plat with the JBoss EAP Quickstarts
+Let's play with the JBoss EAP Quickstarts
