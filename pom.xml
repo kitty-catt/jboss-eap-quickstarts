@@ -437,7 +437,10 @@
 					<module>numberguess</module> <module>payment-cdi-event</module> <module>servlet-async</module> 
 					<module>servlet-filterlistener</module> <module>spring-greeter</module> <module>spring-kitchensink-basic</module> 
 					<module>spring-kitchensink-springmvctest</module> <module>spring-resteasy</module> 
-					<module>tasks-jsf</module> <module>temperature-converter</module> <module>thread-racing</module> 
+					<module>tasks-jsf</module>-->
+ 				<module>temperature-converter</module> 
+					<!--
+					<module>thread-racing</module> 
 					<module>websocket-client</module> <module>websocket-endpoint</module> <module>websocket-hello</module> 
 					<module>xml-jaxp</module> -->
 			</modules>
