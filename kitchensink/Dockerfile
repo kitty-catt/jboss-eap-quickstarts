@@ -10,8 +10,8 @@ RUN  curl -L -X GET 'http://nexus3.tools.svc.cluster.local:8081/service/rest/v1/
   --output /opt/eap/standalone/deployments/kitchensink.war
 
 ENV DEP_DIR="/opt/eap/standalone/deployments"
-RUN chown -R jboss:0 $DEP_DIR \
-    chmod -R g=u $DEP_DIR
+RUN chown -R jboss:0 $DEP_DIR 
+
 
 EXPOSE 8080
 EXPOSE 9990
