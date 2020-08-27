@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kitchensink-deployment
-        image: de.icr.io/kitty-catt/kitchensink
+        image: index.docker.io/rocketronald/jboss-eap-quickstarts
         imagePullPolicy: Always
 ---
 apiVersion: v1
