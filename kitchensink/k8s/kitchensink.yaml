@@ -31,6 +31,10 @@ spec:
   ports:
    - port: 8080
      targetPort: 8080
+     name: service
+   - port: 9990
+     targetPort: 9990
+     name: admin
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
