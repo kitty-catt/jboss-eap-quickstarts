@@ -11,7 +11,6 @@ RUN  curl -L -X GET 'http://nexus3.tools.svc.cluster.local:8081/service/rest/v1/
 
 ENV DEP_DIR="/opt/eap/standalone/deployments"
 RUN chown -R jboss:0 $DEP_DIR \
-    chgrp -R 0 $DEP_DIR \
     chmod -R g=u $DEP_DIR
 
 EXPOSE 8080
