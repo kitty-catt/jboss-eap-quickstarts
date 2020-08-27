@@ -1,6 +1,7 @@
 FROM jboss-eap-7/eap72-openshift
 LABEL io.k8s.description="kitchensink"
 
+USER jboss
 # option 1: get it from the shared workspace
 # TODO
 
