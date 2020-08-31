@@ -19,7 +19,6 @@ spec:
     metadata:
       name: kitchensink-app
       labels:
-        application: kitchensink-app
         deploymentConfig: kitchensink-app
     spec:
       containers:
