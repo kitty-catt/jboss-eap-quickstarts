@@ -26,13 +26,13 @@ spec:
         - resources:
             limits:
               memory: 1Gi
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 10
-            timeoutSeconds: 1
-            periodSeconds: 10                          
+#          readinessProbe:
+#            httpGet:
+#              path: /
+#              port: 8080
+#            initialDelaySeconds: 10
+#            timeoutSeconds: 1
+#            periodSeconds: 10                          
 #          The exec based probe does not work
 #          readinessProbe:
 #            exec:
@@ -47,15 +47,15 @@ spec:
 #            failureThreshold: 3
           terminationMessagePath: /dev/termination-log
           name: kitchensink-app
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 60
-            timeoutSeconds: 1
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 3              
+#          livenessProbe:
+#            httpGet:
+#              path: /
+#              port: 8080
+#            initialDelaySeconds: 60
+#            timeoutSeconds: 1
+#            periodSeconds: 10
+#            successThreshold: 1
+#            failureThreshold: 3              
 #          The exec based probe does not work
 #          livenessProbe:
 #            exec:
