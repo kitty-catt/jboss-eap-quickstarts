@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    description: The web server's http port.
+  labels:
+    application: kitchensink-app
+  name: kitchensink-app
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    deploymentConfig: kitchensink-app
+  sessionAffinity: None
+  type: ClusterIP
