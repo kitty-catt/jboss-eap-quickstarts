@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: kitchensink-app
+  name: kitchensink-route
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: kitchensink-app
+    weight: 100
