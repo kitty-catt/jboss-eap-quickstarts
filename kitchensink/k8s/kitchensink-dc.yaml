@@ -27,29 +27,47 @@ spec:
             limits:
               memory: 1Gi
           readinessProbe:
-            exec:
-              command:
-                - /bin/bash
-                - '-c'
-                - /opt/eap/bin/readinessProbe.sh false
+            httpGet:
+              path: /
+              port: 8080
             initialDelaySeconds: 10
             timeoutSeconds: 1
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 3
+            periodSeconds: 10                          
+#          The exec based probe does not work
+#          readinessProbe:
+#            exec:
+#              command:
+#                - /bin/bash
+#                - '-c'
+#                - /opt/eap/bin/readinessProbe.sh false
+#            initialDelaySeconds: 10
+#            timeoutSeconds: 1
+#            periodSeconds: 10
+#            successThreshold: 1
+#            failureThreshold: 3
           terminationMessagePath: /dev/termination-log
           name: kitchensink-app
           livenessProbe:
-            exec:
-              command:
-                - /bin/bash
-                - '-c'
-                - /opt/eap/bin/livenessProbe.sh
+            httpGet:
+              path: /
+              port: 8080
             initialDelaySeconds: 60
             timeoutSeconds: 1
             periodSeconds: 10
             successThreshold: 1
-            failureThreshold: 3
+            failureThreshold: 3              
+#          The exec based probe does not work
+#          livenessProbe:
+#            exec:
+#              command:
+#                - /bin/bash
+#                - '-c'
+#                - /opt/eap/bin/livenessProbe.sh
+#            initialDelaySeconds: 60
+#            timeoutSeconds: 1
+#            periodSeconds: 10
+#            successThreshold: 1
+#            failureThreshold: 3
           env:
             - name: JGROUPS_PING_PROTOCOL
               value: dns.DNS_PING
