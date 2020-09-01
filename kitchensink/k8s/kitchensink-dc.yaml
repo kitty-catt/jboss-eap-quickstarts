@@ -66,6 +66,36 @@ spec:
               value: 3BDOjxjJ
             - name: AUTO_DEPLOY_EXPLODED
               value: 'false'
+            - name: DATABASE_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: custom-config
+                  key: database_db
+            - name: DATABASE_SVC
+              valueFrom:
+                configMapKeyRef:
+                  name: custom-config
+                  key: database_svc
+            - name: DATABASE_ADMIN
+              valueFrom:
+                secretKeyRef:
+                  name: custom-secret
+                  key: database_admin
+            - name: DATABASE_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: custom-secret
+                  key: database_admin_password
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: custom-secret
+                  key: database_user
+            - name: DATABASE_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: custom-secret
+                  key: database_user_password
           ports:
             - name: jolokia
               containerPort: 8778
