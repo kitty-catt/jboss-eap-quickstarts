@@ -12,6 +12,15 @@ spec:
     resources: {}
   triggers:
     - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - kitchensink-app
+        from:
+          kind: ImageStreamTag
+          namespace: jboss-eap-quickstarts
+          name: 'kitchensink:latest'
   replicas: 1
   selector:
     deploymentConfig: kitchensink-app
@@ -108,7 +117,7 @@ spec:
               protocol: TCP
           imagePullPolicy: Always
           terminationMessagePolicy: File
-          image: index.docker.io/rocketronald/jboss-eap-quickstarts
+          image: kitchensink:latest
       restartPolicy: Always
       terminationGracePeriodSeconds: 75
       dnsPolicy: ClusterFirst
