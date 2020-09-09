@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pnst-deployment
+  labels:
+    app: pnst-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pnst-web
+  template:
+    metadata:
+      labels:
+        app: pnst-web
+    spec:
+      containers:
+      - name: pnst-deployment
+        image: index.docker.io/rocketronald/jboss-eap-quickstarts
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pnst-service
+  labels:
+    app: pnst-web
+spec:
+  selector:
+    app: pnst-web
+  ports:
+   - port: 8080
+     targetPort: 8080
+     name: service
+   - port: 9990
+     targetPort: 9990
+     name: admin
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: pnst-web
+  name: pnst-service
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: pnst-service
+    weight: 100

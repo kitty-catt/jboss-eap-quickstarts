@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: custom-config
+data:
+  database_db: crunchydb
+  database_svc: crunchy

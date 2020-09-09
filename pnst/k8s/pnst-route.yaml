@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: pnst-app
+  labels:
+    application: pnst-app
+spec:
+  to:
+    kind: Service
+    name: pnst-app
+    weight: 100
+  port:
+    targetPort: 8080
+  wildcardPolicy: None

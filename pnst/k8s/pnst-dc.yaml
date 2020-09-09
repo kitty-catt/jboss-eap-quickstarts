@@ -1,0 +1,125 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: pnst-app
+  labels:
+    application: pnst-app
+spec:
+  strategy:
+    type: Recreate
+    recreateParams:
+      timeoutSeconds: 600
+    resources: {}
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - pnst-app
+        from:
+          kind: ImageStreamTag
+          namespace: jboss-eap-quickstarts
+          name: 'pnst:latest'
+  replicas: 1
+  selector:
+    deploymentConfig: pnst-app
+  template:
+    metadata:
+      name: pnst-app
+      labels:
+        deploymentConfig: pnst-app
+    spec:
+      containers:
+        - resources:
+            limits:
+              memory: 1Gi
+#         The exec based probe does work when there is no other JBoss deployment
+          readinessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - '-c'
+                - /opt/eap/bin/readinessProbe.sh false
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+#         The exec based probe does work when there is no other JBoss deployment
+          livenessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - '-c'
+                - /opt/eap/bin/livenessProbe.sh
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          name: pnst-app            
+          env:
+            - name: JGROUPS_PING_PROTOCOL
+              value: dns.DNS_PING
+            - name: OPENSHIFT_DNS_PING_SERVICE_NAME
+              value: eap-app-ping
+            - name: OPENSHIFT_DNS_PING_SERVICE_PORT
+              value: '8888'
+            - name: MQ_CLUSTER_PASSWORD
+              value: qQ5Sy07J
+            - name: MQ_QUEUES
+            - name: MQ_TOPICS
+            - name: JGROUPS_CLUSTER_PASSWORD
+              value: 3BDOjxjJ
+            - name: AUTO_DEPLOY_EXPLODED
+              value: 'false'
+            - name: DATABASE_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: custom-config
+                  key: database_db
+            - name: DATABASE_SVC
+              valueFrom:
+                configMapKeyRef:
+                  name: custom-config
+                  key: database_svc
+            - name: DATABASE_ADMIN
+              valueFrom:
+                secretKeyRef:
+                  name: custom-secret
+                  key: database_admin
+            - name: DATABASE_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: custom-secret
+                  key: database_admin_password
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: custom-secret
+                  key: database_user
+            - name: DATABASE_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: custom-secret
+                  key: database_user_password
+          ports:
+            - name: jolokia
+              containerPort: 8778
+              protocol: TCP
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: ping
+              containerPort: 8888
+              protocol: TCP
+          imagePullPolicy: Always
+          terminationMessagePolicy: File
+          image: pnst:latest
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 75
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
