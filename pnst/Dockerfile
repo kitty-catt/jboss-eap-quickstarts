@@ -10,7 +10,7 @@ USER jboss
 #  --output /opt/eap/standalone/deployments/ROOT.war
 
 # note: we can upload releases but not snapshots.
-RUN  curl -L -X GET 'http://nexus3.tools.svc.cluster.local:8081/service/rest/v1/search/assets/download?sort=version&repository=maven-snapshots&group=org.jboss.eap.quickstarts&name=pnst&maven.baseVersion=0.1&maven.extension=ear' \
+RUN  curl -L -X GET 'http://nexus3.tools.svc.cluster.local:8081/service/rest/v1/search/assets/download?sort=version&repository=maven-releases&group=org.jboss.eap.quickstarts&name=pnst&maven.baseVersion=0.1&maven.extension=ear' \
   --output /opt/eap/standalone/deployments/ROOT.ear
 
 ENV DEP_DIR="/opt/eap/standalone/deployments"
